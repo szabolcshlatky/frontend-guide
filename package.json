@@ -1,0 +1,46 @@
+{
+  "name": "frontend-guide",
+  "description": "Main branch is the webpack 5 boilerplate. Check the other branches for different technology guides.",
+  "keywords": [
+    "Webpack"
+  ],
+  "author": "Coding Sable",
+  "license": "ISC",
+  "private": true,
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "frontend-guide"
+  },
+  "main": "index.js",
+  "engines": {
+    "npm": ">=10.2.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run jest"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all",
+      "IE 11"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "scripts": {
+    "echo": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "link": "^2.1.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
