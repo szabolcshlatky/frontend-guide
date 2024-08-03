@@ -55,3 +55,5 @@ next-env.d.ts
 
 # misc
 *.pem
+
+.fake
