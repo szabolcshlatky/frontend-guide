@@ -64,7 +64,6 @@ module.exports = {
       '.cjs',
       '.json',
       '.html',
-      '.css',
       '.png',
       '.jpg',
       '.jpeg',
