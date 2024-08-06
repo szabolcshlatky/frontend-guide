@@ -59,6 +59,7 @@ module.exports = {
       '.mjs',
       '.cjs',
       '.json',
+      '.html',
       '.css',
       '.png',
       '.jpg',
