@@ -14,11 +14,11 @@ h1.addEventListener('click', () => {
 
 img.addEventListener('click', () => {
   const imgSrc = img.getAttribute('src');
-  if (imgSrc === 'assets/images/jawascript.png') {
-    img.setAttribute('src', 'assets/images/javascript.png');
+  if (imgSrc === 'images/jawascript.png') {
+    img.setAttribute('src', 'images/javascript.png');
     img.setAttribute('alt', 'JavaScript logo featuring a stylized red and blue coffee cup with steam, and the word ˝JavaScript˝ written below in red letters.');
   } else {
-    img.setAttribute('src', 'assets/images/jawascript.png');
+    img.setAttribute('src', 'images/jawascript.png');
     img.setAttribute('alt', 'Illustration of a character resembling a Jawa from Star Wars, dressed in a brown hooded robe with glowing yellow eyes, standing against a dark textured background with JavaScript code snippets. The text ˝JAWASCRIPT PROFESSIONAL˝ is written below the character.');
   }
 });
