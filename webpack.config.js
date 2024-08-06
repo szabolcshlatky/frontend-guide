@@ -1,33 +1,23 @@
 const path = require('path');
-
-// const mod = process.env.NODE_ENV || "development";
-/*
-  if (process.env.NODE_ENV === "production") {
-    mode = "production";
-    // Temporary workaround for 'browserslist' bug that is being patched in the near future
-    target = "browserslist";
-  }
-*/
-/*
-if (process.env.SERVE) {
-  // We only want React Hot Reloading in serve mode
-  plugins.push(
-    new HtmlWebpackPlugin({
-      template: "./dist/index.html",
-    })
-  );
-}
-*/
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
-  target: process.env.NODE_ENV === 'production' ? 'browserslist' : 'web',
-
-  entry: './src/index.js',
+  // entry not required if using `src/index.js` default
+  // output not required if using `dist/main.js` default
   output: {
-    filename: 'bundle.js',
+    filename: 'main.js',
     path: path.resolve(__dirname, 'dist/assets/'),
+    assetModuleFilename: "images/[hash][ext][query]",
   },
+
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: process.env.STATS || "disabled",
+    }),
+    new CleanWebpackPlugin(),
+  ],
 
   devtool: 'inline-source-map',
 
@@ -39,20 +29,36 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['babel-loader'], // will use .babelrc
-      }
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        /**
+         * The `type` setting replaces the need for "url-loader"
+         * and "file-loader" in Webpack 5.
+         *
+         * setting `type` to "asset" will automatically pick between
+         * outputing images to a file, or inlining them in the bundle as base64
+         * with a default max inline size of 8kb
+         */
+        type: "asset",
+
+        /**
+         * If you want to inline larger images, you can set
+         * a custom `maxSize` for inline like so:
+         */
+        // parser: {
+        //   dataUrlCondition: {
+        //     maxSize: 30 * 1024,
+        //   },
+        // },
+      },
     ],
   },
+
   resolve: {
     extensions: [
-      '.ts',
       '.js',
       '.mjs',
       '.cjs',
       '.json',
-      '.scss',
       '.css',
       '.png',
       '.jpg',
