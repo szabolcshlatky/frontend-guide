@@ -1,8 +1,11 @@
 {
   "name": "frontend-guide",
-  "description": "Webpack 5 boilerplate - Main branch of the frontend-guide repository on GitHub. The page topic is a learning syllabus and roadmap with resource links.",
+  "description": "HTML Guide - A branch of the frontend-guide repository on GitHub. Use it as reference for the best HTML, Technical SEO, A11y practices and RegExp cheatsheet.",
   "keywords": [
-    "Webpack"
+    "HTML",
+    "SEO",
+    "A11y",
+    "RegExp"
   ],
   "author": "Coding Sable",
   "license": "ISC",
@@ -30,6 +33,7 @@
     "@types/webpack-bundle-analyzer": "^4.7.0",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
+    "html-webpack-plugin": "^5.6.0",
     "prettier": "^3.3.3",
     "webpack": "^5.93.0",
     "webpack-bundle-analyzer": "^4.10.2",

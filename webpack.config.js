@@ -2,6 +2,7 @@ const path = require('path');
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   // entry not required if using `src/index.js` default
@@ -17,6 +18,9 @@ module.exports = {
       analyzerMode: process.env.STATS || "disabled",
     }),
     new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+    })
   ],
 
   devtool: 'inline-source-map',
@@ -59,6 +63,7 @@ module.exports = {
       '.mjs',
       '.cjs',
       '.json',
+      '.html',
       '.css',
       '.png',
       '.jpg',
