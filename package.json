@@ -1,6 +1,6 @@
 {
   "name": "frontend-guide",
-  "description": "Webpack 5 boilerplate - Main branch of the frontend-guide repository on GitHub. The page topic is a learning syllabus and roadmap with resource links.",
+  "description": "Webpack 5 boilerplate - Main branch of the frontend-guide repository on GitHub.",
   "keywords": [
     "Webpack"
   ],
