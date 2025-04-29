@@ -60,14 +60,240 @@
   </header>
 
   <main>
-    <section>
-      <article>
-        <h2>Webpack 5 - CHECK THE BOILERPLATE CODE</h2>
-      </article>
-    </section>
+    <article>
+      <h2>Analysis of package.json</h2>
+      <p>The <code>package.json</code> file is the core configuration file for
+        Node.js projects, defining metadata, dependencies, and executable scripts.
+        This section explains its key components, focusing on dependencies and
+        scripts, as outlined in the provided configuration.</p>
+
+      <h3>Dependencies Overview</h3>
+      <p>Dependencies in <code>package.json</code> are divided into two
+        categories: <code>dependencies</code> and <code>devDependencies</code>.
+        Here's the distinction:</p>
+      <ul>
+        <li><strong>dependencies</strong>: Packages required for the application
+          to run in production. These are essential for the deployed application.
+        </li>
+        <li><strong>devDependencies</strong>: Packages used during development or
+          build processes, such as tools for bundling, testing, or formatting
+          code. These are not needed in production.</li>
+      </ul>
+      <p>The provided <code>package.json</code> includes several
+        <code>devDependencies</code>, which are analyzed below for their purpose
+        and version relevance as of April 29, 2025.</p>
+
+      <h4>DevDependencies</h4>
+      <p>The following packages are listed under <code>devDependencies</code>,
+        each serving a specific role in the development workflow:</p>
+      <ol>
+        <li>
+          <h5><code>@types/webpack-bundle-analyzer: ^4.7.0</code></h5>
+          <p>Provides TypeScript type definitions for the <a
+              href="https://www.npmjs.com/package/webpack-bundle-analyzer">webpack-bundle-analyzer</a>
+            package, ensuring type safety in TypeScript projects. Version 4.7.0 is
+            recent but may have newer patch releases (e.g., 4.10.x). If TypeScript
+            is not used, this package is unnecessary.</p>
+        </li>
+        <li>
+          <h5><code>clean-webpack-plugin: ^4.0.0</code></h5>
+          <p>Cleans the output directory (e.g., <code>dist</code>) before each
+            build, preventing stale files. Version 4.0.0 is stable and compatible
+            with Webpack 5, with minor updates potentially available.</p>
+        </li>
+        <li>
+          <h5><code>concurrently: ^8.2.2</code></h5>
+          <p>Enables running multiple commands simultaneously, used in the
+            <code>dev</code> script to run Webpack's watch mode and development
+            server. Version 8.2.2 is recent, with possible minor updates.</p>
+        </li>
+        <li>
+          <h5><code>cross-env: ^7.0.3</code></h5>
+          <p>Sets environment variables in a platform-agnostic way (e.g.,
+            <code>NODE_ENV=production</code>). Version 7.0.3 is stable and widely
+            used, with no urgent need for upgrades.</p>
+        </li>
+        <li>
+          <h5><code>prettier: ^3.5.3</code></h5>
+          <p>An opinionated code formatter for consistent code style. Version
+            3.5.3 is very recent (early 2025), likely the latest or near-latest
+            version.</p>
+        </li>
+        <li>
+          <h5><code>webpack: ^5.99.7</code></h5>
+          <p>The core Webpack module bundler, responsible for processing and
+            optimizing code. Version 5.99.7 is among the latest in the Webpack 5
+            series, ensuring compatibility with modern workflows.</p>
+        </li>
+        <li>
+          <h5><code>webpack-bundle-analyzer: ^4.10.2</code></h5>
+          <p>Visualizes the bundle's content, helping identify large modules for
+            optimization. Version 4.10.2 is recent and compatible with Webpack 5,
+            with possible minor updates.</p>
+        </li>
+        <li>
+          <h5><code>webpack-cli: ^5.1.4</code></h5>
+          <p>Provides the command-line interface for Webpack, enabling
+            terminal-based builds. Version 5.1.4 is stable and compatible with
+            <code>webpack@5.99.7</code>.</p>
+        </li>
+        <li>
+          <h5><code>webpack-dev-server: ^5.2.1</code></h5>
+          <p>Runs a development server with hot module replacement (HMR) for
+            real-time browser updates. Version 5.2.1 is recent and supports
+            Webpack 5 features.</p>
+        </li>
+      </ol>
+      <h6>Version Recommendations</h6>
+      <p>Most packages are up-to-date or close to the latest versions. Running
+        <code>npm outdated</code> can identify minor updates. If the project
+        functions correctly, updates are not critical unless new features or bug
+        fixes are needed.</p>
+
+      <h4>Scripts</h4>
+      <p>The <code>scripts</code> section defines commands for development,
+        building, and analysis. Each script is explained below:</p>
+      <ul>
+        <li>
+          <h5><code>echo: "echo \"Error: no test specified\" && exit 1"</code>
+          </h5>
+          <p>A placeholder for the <code>npm test</code> command, outputting an
+            error as no test suite is configured. Replace with a test runner
+            (e.g., Jest) if testing is needed.</p>
+        </li>
+        <li>
+          <h5>
+            <code>dev: "cross-env NODE_ENV=development concurrently \"webpack --watch\" \"webpack serve\""</code>
+          </h5>
+          <p>Starts development mode, running two commands in parallel:
+            <code>webpack --watch</code> rebuilds on file changes, and
+            <code>webpack serve</code> launches a development server with HMR. The
+            <code>NODE_ENV=development</code> ensures debug-friendly output.</p>
+        </li>
+        <li>
+          <h5><code>build: "cross-env NODE_ENV=production webpack"</code></h5>
+          <p>Generates a production build with optimizations (e.g., minification,
+            tree-shaking) by setting <code>NODE_ENV=production</code>. Outputs
+            files to the <code>dist</code> directory.</p>
+        </li>
+        <li>
+          <h5>
+            <code>stats: "cross-env NODE_ENV=production STATS=server webpack --profile --json bundle-stats.json"</code>
+          </h5>
+          <p>Analyzes the bundle using <code>webpack-bundle-analyzer</code>,
+            generating a JSON report (<code>bundle-stats.json</code>) and a visual
+            interface. Useful for optimizing bundle size.</p>
+        </li>
+        <li>
+          <h5><code>clean: "rm -rf ./dist"</code></h5>
+          <p>Deletes the <code>dist</code> directory. Rarely needed, as
+            <code>clean-webpack-plugin</code> automatically cleans during builds.
+          </p>
+        </li>
+      </ul>
+    </article>
+
+    <aside>
+      <h2>Analysis of webpack.config.js</h2>
+      <p>The <code>webpack.config.js</code> file configures Webpack 5, defining
+        how the project is bundled, processed, and served. This section breaks
+        down its structure and functionality.</p>
+
+      <h3>Imports</h3>
+      <p>The configuration begins with required Node.js modules and Webpack
+        plugins:</p>
+      <ul>
+        <li><code>path</code>: Built-in Node.js module for handling file paths.
+        </li>
+        <li><code>BundleAnalyzerPlugin</code>: Visualizes bundle composition for
+          size optimization.</li>
+        <li><code>CleanWebpackPlugin</code>: Removes old files from the output
+          directory before builds.</li>
+      </ul>
+
+      <h3>Configuration Sections</h3>
+      <p>The configuration is divided into several key sections, each controlling
+        a specific aspect of Webpack's behavior.</p>
+
+      <h4>Output</h4>
+      <p>Defines where and how bundled files are saved:</p>
+      <ol>
+        <li><code>filename: 'main.js'</code>: Names the output JavaScript bundle.
+        </li>
+        <li><code>path: path.resolve(__dirname, 'dist/assets/')</code>: Sets the
+          output directory to <code>dist/assets/</code>.</li>
+        <li><code>assetModuleFilename: "images/[hash][ext][query]"</code>:
+          Specifies naming for asset files (e.g., images), using a hash for cache
+          busting.</li>
+      </ol>
+
+      <h4>Plugins</h4>
+      <p>Extends Webpack's functionality with the following plugins:</p>
+      <ul>
+        <li>
+          <h5><code>BundleAnalyzerPlugin</code></h5>
+          <p>Activated only when the <code>STATS</code> environment variable is
+            set (e.g., during <code>npm run stats</code>). Displays a visual
+            bundle analysis in a browser.</p>
+        </li>
+        <li>
+          <h5><code>CleanWebpackPlugin</code></h5>
+          <p>Cleans the <code>dist</code> directory before each build, ensuring no
+            outdated files remain.</p>
+        </li>
+      </ul>
+
+      <h4>Devtool</h4>
+      <p>Configures source maps for debugging:</p>
+      <ul>
+        <li><code>devtool: 'inline-source-map'</code>: Embeds source maps in the
+          bundle, showing original source code in browser dev tools. Suitable for
+          development but increases bundle size.</li>
+      </ul>
+      <h6>Recommendation</h6>
+      <p>For production, consider using <code>source-map</code> or disabling
+        source maps to reduce bundle size.</p>
+
+      <h4>DevServer</h4>
+      <p>Sets up the development server for real-time updates:</p>
+      <ol>
+        <li><code>static: { directory: './dist' }</code>: Serves files from the
+          <code>dist</code> directory.</li>
+        <li><code>hot: true</code>: Enables hot module replacement (HMR) for
+          automatic browser updates without full reloads.</li>
+      </ol>
+
+      <h4>Module Rules</h4>
+      <p>Defines how different file types are processed:</p>
+      <ul>
+        <li>
+          <h5>Image Handling</h5>
+          <p>Processes files matching <code>/\.(png|jpe?g|gif|svg)$/i</code> using
+            Webpack 5's <code>asset</code> module type. Small images (&lt;8KB) are
+            inlined as base64; larger ones are saved as files in
+            <code>dist/assets/images/</code>.</p>
+        </li>
+      </ul>
+      <h6>Note</h6>
+      <p>No rules exist for CSS or other file types, limiting the configuration's
+        ability to process stylesheets without additional loaders.</p>
+
+      <h4>Resolve</h4>
+      <p>Configures how Webpack resolves module imports:</p>
+      <ul>
+        <li><code>extensions</code>: Lists file extensions Webpack recognizes
+          (e.g., <code>.js</code>, <code>.css</code>, <code>.png</code>).
+          Including image extensions is unusual, as they are typically handled by
+          the <code>asset</code> module.</li>
+      </ul>
+
+      <a href="#" title="page's top">
+        <img src="images/favicon.ico" alt="©貂" width="32px" height="32px">
+      </a>
+    </aside>
   </main>
 
-  <script src="assets/bundle.js" defer></script>
+  <script src="assets/main.js" defer></script>
   <noscript>The web-browser does NOT support JavaScript or it is switched
     off!</noscript>
 </body>
