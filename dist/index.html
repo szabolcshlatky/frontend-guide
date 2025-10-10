@@ -43,12 +43,9 @@
         <!-- <source srcset="https://pbs.twimg.com/media/CcJ8rRJUYAEfLqn.jpg"
           type="image/png" media="(max-width: 599px)"
           sizes="(max-width: 599px) 128px, 128px" /> -->
-        <img
-          src="images/jawascript.png"
+        <img src="images/jawascript.png"
           alt="Illustration of a character resembling a Jawa from Star Wars, dressed in a brown hooded robe with glowing yellow eyes, standing against a dark textured background with JavaScript code snippets. The text 'JAWASCRIPT PROFESSIONAL' is written below the character."
-          width="100%"
-          height="100%"
-        />
+          width="100%" height="100%" />
       </picture>
       <figcaption>
         <figcaption>
@@ -63,7 +60,8 @@
     <article>
       <h2>Analysis of package.json</h2>
       <p>The <code>package.json</code> file is the core configuration file for
-        Node.js projects, defining metadata, dependencies, and executable scripts.
+        Node.js projects, defining metadata, dependencies, and executable
+        scripts.
         This section explains its key components, focusing on dependencies and
         scripts, as outlined in the provided configuration.</p>
 
@@ -73,15 +71,18 @@
         Here's the distinction:</p>
       <ul>
         <li><strong>dependencies</strong>: Packages required for the application
-          to run in production. These are essential for the deployed application.
+          to run in production. These are essential for the deployed
+          application.
         </li>
-        <li><strong>devDependencies</strong>: Packages used during development or
+        <li><strong>devDependencies</strong>: Packages used during development
+          or
           build processes, such as tools for bundling, testing, or formatting
           code. These are not needed in production.</li>
       </ul>
       <p>The provided <code>package.json</code> includes several
         <code>devDependencies</code>, which are analyzed below for their purpose
-        and version relevance as of April 29, 2025.</p>
+        and version relevance as of April 29, 2025.
+      </p>
 
       <h4>DevDependencies</h4>
       <p>The following packages are listed under <code>devDependencies</code>,
@@ -89,28 +90,36 @@
       <ol>
         <li>
           <h5><code>@types/webpack-bundle-analyzer: ^4.7.0</code></h5>
-          <p>Provides TypeScript type definitions for the <code>webpack-bundle-analyzer</code>
-            package, ensuring type safety in TypeScript projects. Version 4.7.0 is
-            recent but may have newer patch releases (e.g., 4.10.x). If TypeScript
-            is not used, this package is unnecessary.</p>
+          <p>Provides TypeScript type definitions for the
+            <code>webpack-bundle-analyzer</code>
+            package, ensuring type safety in TypeScript projects. Version 4.7.0
+            is
+            recent but may have newer patch releases (e.g., 4.10.x). If
+            TypeScript
+            is not used, this package is unnecessary.
+          </p>
         </li>
         <li>
           <h5><code>clean-webpack-plugin: ^4.0.0</code></h5>
           <p>Cleans the output directory (e.g., <code>dist</code>) before each
-            build, preventing stale files. Version 4.0.0 is stable and compatible
+            build, preventing stale files. Version 4.0.0 is stable and
+            compatible
             with Webpack 5, with minor updates potentially available.</p>
         </li>
         <li>
           <h5><code>concurrently: ^9.1.2</code></h5>
           <p>Enables running multiple commands simultaneously, used in the
             <code>dev</code> script to run Webpack's watch mode and development
-            server. Version 9.1.2 is recent, with possible minor updates.</p>
+            server. Version 9.1.2 is recent, with possible minor updates.
+          </p>
         </li>
         <li>
           <h5><code>cross-env: ^7.0.3</code></h5>
           <p>Sets environment variables in a platform-agnostic way (e.g.,
-            <code>NODE_ENV=production</code>). Version 7.0.3 is stable and widely
-            used, with no urgent need for upgrades.</p>
+            <code>NODE_ENV=production</code>). Version 7.0.3 is stable and
+            widely
+            used, with no urgent need for upgrades.
+          </p>
         </li>
         <li>
           <h5><code>prettier: ^3.5.3</code></h5>
@@ -127,14 +136,16 @@
         <li>
           <h5><code>webpack-bundle-analyzer: ^4.10.2</code></h5>
           <p>Visualizes the bundle's content, helping identify large modules for
-            optimization. Version 4.10.2 is recent and compatible with Webpack 5,
+            optimization. Version 4.10.2 is recent and compatible with Webpack
+            5,
             with possible minor updates.</p>
         </li>
         <li>
           <h5><code>webpack-cli: ^6.0.1</code></h5>
           <p>Provides the command-line interface for Webpack, enabling
             terminal-based builds. Version 6.0.1 is stable and compatible with
-            <code>webpack@5.99.7</code>.</p>
+            <code>webpack@5.99.7</code>.
+          </p>
         </li>
         <li>
           <h5><code>webpack-dev-server: ^5.2.1</code></h5>
@@ -147,7 +158,8 @@
       <p>Most packages are up-to-date or close to the latest versions. Running
         <code>npm outdated</code> can identify minor updates. If the project
         functions correctly, updates are not critical unless new features or bug
-        fixes are needed.</p>
+        fixes are needed.
+      </p>
 
       <h4>Scripts</h4>
       <p>The <code>scripts</code> section defines commands for development,
@@ -166,12 +178,15 @@
           </h5>
           <p>Starts development mode, running two commands in parallel:
             <code>webpack --watch</code> rebuilds on file changes, and
-            <code>webpack serve</code> launches a development server with HMR. The
-            <code>NODE_ENV=development</code> ensures debug-friendly output.</p>
+            <code>webpack serve</code> launches a development server with HMR.
+            The
+            <code>NODE_ENV=development</code> ensures debug-friendly output.
+          </p>
         </li>
         <li>
           <h5><code>build: "cross-env NODE_ENV=production webpack"</code></h5>
-          <p>Generates a production build with optimizations (e.g., minification,
+          <p>Generates a production build with optimizations (e.g.,
+            minification,
             tree-shaking) by setting <code>NODE_ENV=production</code>. Outputs
             files to the <code>dist</code> directory.</p>
         </li>
@@ -180,13 +195,15 @@
             <code>stats: "cross-env NODE_ENV=production STATS=server webpack --profile --json bundle-stats.json"</code>
           </h5>
           <p>Analyzes the bundle using <code>webpack-bundle-analyzer</code>,
-            generating a JSON report (<code>bundle-stats.json</code>) and a visual
+            generating a JSON report (<code>bundle-stats.json</code>) and a
+            visual
             interface. Useful for optimizing bundle size.</p>
         </li>
         <li>
           <h5><code>clean: "rm -rf ./dist"</code></h5>
           <p>Deletes the <code>dist</code> directory. Rarely needed, as
-            <code>clean-webpack-plugin</code> automatically cleans during builds.
+            <code>clean-webpack-plugin</code> automatically cleans during
+            builds.
           </p>
         </li>
       </ul>
@@ -211,18 +228,21 @@
       </ul>
 
       <h3>Configuration Sections</h3>
-      <p>The configuration is divided into several key sections, each controlling
+      <p>The configuration is divided into several key sections, each
+        controlling
         a specific aspect of Webpack's behavior.</p>
 
       <h4>Output</h4>
       <p>Defines where and how bundled files are saved:</p>
       <ol>
-        <li><code>filename: 'main.js'</code>: Names the output JavaScript bundle.
+        <li><code>filename: 'main.js'</code>: Names the output JavaScript
+          bundle.
         </li>
         <li><code>path: path.resolve(__dirname, 'dist/assets/')</code>: Sets the
           output directory to <code>dist/assets/</code>.</li>
         <li><code>assetModuleFilename: "images/[hash][ext][query]"</code>:
-          Specifies naming for asset files (e.g., images), using a hash for cache
+          Specifies naming for asset files (e.g., images), using a hash for
+          cache
           busting.</li>
       </ol>
 
@@ -237,7 +257,8 @@
         </li>
         <li>
           <h5><code>CleanWebpackPlugin</code></h5>
-          <p>Cleans the <code>dist</code> directory before each build, ensuring no
+          <p>Cleans the <code>dist</code> directory before each build, ensuring
+            no
             outdated files remain.</p>
         </li>
       </ul>
@@ -246,7 +267,8 @@
       <p>Configures source maps for debugging:</p>
       <ul>
         <li><code>devtool: 'inline-source-map'</code>: Embeds source maps in the
-          bundle, showing original source code in browser dev tools. Suitable for
+          bundle, showing original source code in browser dev tools. Suitable
+          for
           development but increases bundle size.</li>
       </ul>
       <h6>Recommendation</h6>
@@ -257,7 +279,8 @@
       <p>Sets up the development server for real-time updates:</p>
       <ol>
         <li><code>static: { directory: './dist' }</code>: Serves files from the
-          <code>dist</code> directory.</li>
+          <code>dist</code> directory.
+        </li>
         <li><code>hot: true</code>: Enables hot module replacement (HMR) for
           automatic browser updates without full reloads.</li>
       </ol>
@@ -267,14 +290,18 @@
       <ul>
         <li>
           <h5>Image Handling</h5>
-          <p>Processes files matching <code>/\.(png|jpe?g|gif|svg)$/i</code> using
-            Webpack 5's <code>asset</code> module type. Small images (&lt;8KB) are
+          <p>Processes files matching <code>/\.(png|jpe?g|gif|svg)$/i</code>
+            using
+            Webpack 5's <code>asset</code> module type. Small images (&lt;8KB)
+            are
             inlined as base64; larger ones are saved as files in
-            <code>dist/assets/images/</code>.</p>
+            <code>dist/assets/images/</code>.
+          </p>
         </li>
       </ul>
       <h6>Note</h6>
-      <p>No rules exist for CSS or other file types, limiting the configuration's
+      <p>No rules exist for CSS or other file types, limiting the
+        configuration's
         ability to process stylesheets without additional loaders.</p>
 
       <h4>Resolve</h4>
@@ -282,7 +309,8 @@
       <ul>
         <li><code>extensions</code>: Lists file extensions Webpack recognizes
           (e.g., <code>.js</code>, <code>.css</code>, <code>.png</code>).
-          Including image extensions is unusual, as they are typically handled by
+          Including image extensions is unusual, as they are typically handled
+          by
           the <code>asset</code> module.</li>
       </ul>
 
