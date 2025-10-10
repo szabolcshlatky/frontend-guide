@@ -8,7 +8,7 @@ A practical guide for setting up and managing Node.js development on Windows 11,
 
 - **Official Node.js Website:**
   - Go to [https://nodejs.org/](https://nodejs.org/)
-  - Download the **LTS** (recommended for most users) or **Current** version for Windows.
+  - Download the **LTS** (recommended for most users) or **Current** version for Windows 11.
   - Run the installer. It will also install **npm** (Node Package Manager) by default.
 
 - **Chocolatey (Optional):**
